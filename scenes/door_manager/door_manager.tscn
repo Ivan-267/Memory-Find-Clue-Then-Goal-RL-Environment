@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://chjwnsel8tuf1"]
+
+[ext_resource type="Script" uid="uid://m4c2t2dym8s0" path="res://scenes/door_manager/door_manager.gd" id="1_binx4"]
+
+[node name="DoorManager" type="Node3D"]
+script = ExtResource("1_binx4")

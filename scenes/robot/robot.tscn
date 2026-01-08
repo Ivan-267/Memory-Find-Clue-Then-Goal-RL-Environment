@@ -1,0 +1,387 @@
+[gd_scene load_steps=11 format=3 uid="uid://ctvcte24jvlna"]
+
+[ext_resource type="Script" uid="uid://chdya8501n2oj" path="res://scenes/robot/robot.gd" id="1_gnvke"]
+[ext_resource type="PackedScene" uid="uid://bb2je1c8jc1qr" path="res://assets/robot.glb" id="2_0abj3"]
+[ext_resource type="Script" uid="uid://bml1d20vwfwlh" path="res://scenes/robot/ai_controller_3d.gd" id="3_ujdmv"]
+[ext_resource type="Script" uid="uid://mgi2v3glcbtk" path="res://scenes/robot/MultiLayerRaycastSensor3D.gd" id="4_jhdl5"]
+[ext_resource type="Script" uid="uid://dycykdwym1nvj" path="res://addons/godot_rl_agents/rewards/ApproachNodeReward3D.gd" id="6_6bji6"]
+
+[sub_resource type="Animation" id="Animation_2kfmf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Robot/Arm:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Robot/Arm_001:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Robot/Torso:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Robot/Head:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Robot/Head:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ly00x"]
+resource_name = "idle"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Robot/Arm:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.349066, 0, 0.0610865)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Robot/Arm_001:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.349066, 0, -0.148353)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Robot/Head:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.162316, 0.0488692), Vector3(0, 0, 0), Vector3(0.139626, -0.178024, 0.0226893)]
+}
+
+[sub_resource type="Animation" id="Animation_6jb0l"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Robot/Arm:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.174533, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Robot/Arm_001:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.174533, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Robot/Torso:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.01, 0), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Robot/Head:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.02, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Robot/Head:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.0349066, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g7kmm"]
+_data = {
+&"RESET": SubResource("Animation_2kfmf"),
+&"idle": SubResource("Animation_ly00x"),
+&"walking": SubResource("Animation_6jb0l")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7xgfq"]
+radius = 0.195862
+height = 0.655
+
+[node name="Robot" type="CharacterBody3D" groups=["resetable"]]
+collision_layer = 2
+collision_mask = 15
+floor_stop_on_slope = false
+floor_max_angle = 0.872665
+safe_margin = 0.01
+script = ExtResource("1_gnvke")
+
+[node name="robot" parent="." instance=ExtResource("2_0abj3")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="robot"]
+libraries = {
+&"": SubResource("AnimationLibrary_g7kmm")
+}
+autoplay = "idle"
+speed_scale = 2.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.177229, 0)
+shape = SubResource("CapsuleShape3D_7xgfq")
+
+[node name="AIController3D" type="Node3D" parent="."]
+script = ExtResource("3_ujdmv")
+reset_after = 2500
+
+[node name="Multiraycast" type="Node3D" parent="AIController3D" node_paths=PackedStringArray("objects_to_ignore")]
+transform = Transform3D(0.9999997, 0, 0, 0, 1, 0, 0, 0, 0.9999997, 0, 0.1, 0)
+script = ExtResource("4_jhdl5")
+objects_to_ignore = [NodePath("../..")]
+collision_layers_to_detect = Array[int]([1, 2, 3, 4, 5, 6, 7])
+n_rays_width = 32.0
+n_rays_height = 1.0
+ray_length = 3.25
+cone_width = 200.0
+cone_height = 1.0
+collide_with_areas = true
+
+[node name="node_0_0 0_0" type="RayCast3D" parent="AIController3D/Multiraycast"]
+target_position = Vector3(-3.2266314, 0, -0.3890369)
+collision_mask = 127
+collide_with_areas = true
+
+[node name="node_1_0 0_0" type="RayCast3D" parent="AIController3D/Multiraycast"]
+target_position = Vector3(-3.2498066, 0, -0.035451297)
+collision_mask = 127
+collide_with_areas = true
+
+[node name="node_2_0 0_0" type="RayCast3D" parent="AIController3D/Multiraycast"]
+target_position = Vector3(-3.2343504, 0, 0.3185557)
+collision_mask = 127
+collide_with_areas = true
+
+[node name="node_3_0 0_0" type="RayCast3D" parent="AIController3D/Multiraycast"]
+target_position = Vector3(-3.1804464, 0, 0.6687759)
+collision_mask = 127
+collide_with_areas = true
+
+[node name="@RayCast3D@28397" type="RayCast3D" parent="AIController3D/Multiraycast"]
+target_position = Vector3(-3.0887353, 0, 1.0110462)
+collision_mask = 127
+collide_with_areas = true
+
+[node name="@RayCast3D@28398" type="RayCast3D" parent="AIController3D/Multiraycast"]
+target_position = Vector3(-2.9603074, 0, 1.3412979)
+collision_mask = 127
+collide_with_areas = true
+
+[node name="@RayCast3D@28399" type="RayCast3D" parent="AIController3D/Multiraycast"]
+target_position = Vector3(-2.7966895, 0, 1.6556051)
+collision_mask = 127
+collide_with_areas = true
+
+[node name="@RayCast3D@28400" type="RayCast3D" parent="AIController3D/Multiraycast"]
+target_position = Vector3(-2.5998263, 0, 1.9502316)
+collision_mask = 127
+collide_with_areas = true
+
+[node name="node_8_0 0_0" type="RayCast3D" parent="AIController3D/Multiraycast"]
+target_position = Vector3(-2.3720582, 0, 2.221675)
+collision_mask = 127
+collide_with_areas = true
+
+[node name="node_9_0 0_0" type="RayCast3D" parent="AIController3D/Multiraycast"]
+target_position = Vector3(-2.1160927, 0, 2.4667087)
+collision_mask = 127
+collide_with_areas = true
+
+[node name="node_10_0 0_0" type="RayCast3D" parent="AIController3D/Multiraycast"]
+target_position = Vector3(-1.8349725, 0, 2.6824198)
+collision_mask = 127
+collide_with_areas = true
+
+[node name="node_11_0 0_0" type="RayCast3D" parent="AIController3D/Multiraycast"]
+target_position = Vector3(-1.5320394, 0, 2.866244)
+collision_mask = 127
+collide_with_areas = true
+
+[node name="node_12_0 0_0" type="RayCast3D" parent="AIController3D/Multiraycast"]
+target_position = Vector3(-1.2108945, 0, 3.0159965)
+collision_mask = 127
+collide_with_areas = true
+
+[node name="node_13_0 0_0" type="RayCast3D" parent="AIController3D/Multiraycast"]
+target_position = Vector3(-0.8753552, 0, 3.1298966)
+collision_mask = 127
+collide_with_areas = true
+
+[node name="node_14_0 0_0" type="RayCast3D" parent="AIController3D/Multiraycast"]
+target_position = Vector3(-0.5294103, 0, 3.206591)
+collision_mask = 127
+collide_with_areas = true
+
+[node name="node_15_0 0_0" type="RayCast3D" parent="AIController3D/Multiraycast"]
+target_position = Vector3(-0.17717212, 0, 3.2451673)
+collision_mask = 127
+collide_with_areas = true
+
+[node name="node_16_0 0_0" type="RayCast3D" parent="AIController3D/Multiraycast"]
+target_position = Vector3(0.17717212, 0, 3.2451673)
+collision_mask = 127
+collide_with_areas = true
+
+[node name="node_17_0 0_0" type="RayCast3D" parent="AIController3D/Multiraycast"]
+target_position = Vector3(0.5294103, 0, 3.206591)
+collision_mask = 127
+collide_with_areas = true
+
+[node name="node_18_0 0_0" type="RayCast3D" parent="AIController3D/Multiraycast"]
+target_position = Vector3(0.8753552, 0, 3.1298966)
+collision_mask = 127
+collide_with_areas = true
+
+[node name="node_19_0 0_0" type="RayCast3D" parent="AIController3D/Multiraycast"]
+target_position = Vector3(1.2108945, 0, 3.0159965)
+collision_mask = 127
+collide_with_areas = true
+
+[node name="node_20_0 0_0" type="RayCast3D" parent="AIController3D/Multiraycast"]
+target_position = Vector3(1.5320394, 0, 2.866244)
+collision_mask = 127
+collide_with_areas = true
+
+[node name="node_21_0 0_0" type="RayCast3D" parent="AIController3D/Multiraycast"]
+target_position = Vector3(1.8349725, 0, 2.6824198)
+collision_mask = 127
+collide_with_areas = true
+
+[node name="node_22_0 0_0" type="RayCast3D" parent="AIController3D/Multiraycast"]
+target_position = Vector3(2.1160927, 0, 2.4667087)
+collision_mask = 127
+collide_with_areas = true
+
+[node name="node_23_0 0_0" type="RayCast3D" parent="AIController3D/Multiraycast"]
+target_position = Vector3(2.3720582, 0, 2.221675)
+collision_mask = 127
+collide_with_areas = true
+
+[node name="node_24_0 0_0" type="RayCast3D" parent="AIController3D/Multiraycast"]
+target_position = Vector3(2.5998263, 0, 1.9502316)
+collision_mask = 127
+collide_with_areas = true
+
+[node name="node_25_0 0_0" type="RayCast3D" parent="AIController3D/Multiraycast"]
+target_position = Vector3(2.7966895, 0, 1.6556051)
+collision_mask = 127
+collide_with_areas = true
+
+[node name="node_26_0 0_0" type="RayCast3D" parent="AIController3D/Multiraycast"]
+target_position = Vector3(2.9603074, 0, 1.3412979)
+collision_mask = 127
+collide_with_areas = true
+
+[node name="node_27_0 0_0" type="RayCast3D" parent="AIController3D/Multiraycast"]
+target_position = Vector3(3.0887353, 0, 1.0110462)
+collision_mask = 127
+collide_with_areas = true
+
+[node name="node_28_0 0_0" type="RayCast3D" parent="AIController3D/Multiraycast"]
+target_position = Vector3(3.1804464, 0, 0.6687759)
+collision_mask = 127
+collide_with_areas = true
+
+[node name="node_29_0 0_0" type="RayCast3D" parent="AIController3D/Multiraycast"]
+target_position = Vector3(3.2343504, 0, 0.3185557)
+collision_mask = 127
+collide_with_areas = true
+
+[node name="node_30_0 0_0" type="RayCast3D" parent="AIController3D/Multiraycast"]
+target_position = Vector3(3.2498066, 0, -0.035451297)
+collision_mask = 127
+collide_with_areas = true
+
+[node name="node_31_0 0_0" type="RayCast3D" parent="AIController3D/Multiraycast"]
+target_position = Vector3(3.2266314, 0, -0.3890369)
+collision_mask = 127
+collide_with_areas = true
+
+[node name="ApproachGoalReward" type="Node3D" parent="AIController3D"]
+script = ExtResource("6_6bji6")
